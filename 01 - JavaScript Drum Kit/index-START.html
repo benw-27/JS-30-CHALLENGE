@@ -65,7 +65,7 @@ function playSound(e) {
   audio.currentTime = 0; // Will rewind audio to start if already playing.
   audio.play()
   key.classList.add('playing');
-}
+};
 
 function removeTransition(e) {
   if(e.propertyName !== 'transform') return; //skip if its not a transform.
