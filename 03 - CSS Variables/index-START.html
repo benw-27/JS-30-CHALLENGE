@@ -21,6 +21,21 @@
   <img src="https://source.unsplash.com/7bwQXzbF6KE/800x500">
 
   <style>
+      :root {
+        --base: #ffc600;
+        --spacing: 10px;
+        --blur: 10px;
+      }
+
+      img {
+        padding: var(--spacing);
+        background: var(--base);
+        filter: blur(var(--blur));
+      }
+
+      .h1 {
+        color: var(--base);
+      }
 
     /*
       misc styles, nothing to do with CSS variables
@@ -44,7 +59,18 @@
     }
   </style>
 
+
   <script>
+    const inputs = document.querySelectorAll('.controls input') //Grab all controls
+
+    inputs.forEach(input => input.addEventListener('change', handleUpdate)) // Add event listeners forEach, on 'change' or 'mousemove' run handleUpdate
+    inputs.forEach(input => input.addEventListener('mousemove', handleUpdate))
+
+    function handleUpdate(){
+      const suffix = this.dataset.sizing || ''; // Check if px suffix OR blank
+      document.documentElement.style.setProperty(`--${this.name}`, this.value + suffix) // Update style
+    }
+
   </script>
 
 </body>
